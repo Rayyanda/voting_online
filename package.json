@@ -2,7 +2,7 @@
   "name": "voting_online",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": ".\node_modules\bin\node app.js"
   },
