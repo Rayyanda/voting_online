@@ -7,6 +7,7 @@ const moment = require("moment");
 const multer = require("multer");
 const sharp = require("sharp");
 const path = require("path");
+const port = process.env.port || 3000;
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended:false}));
@@ -618,4 +619,4 @@ app.get('/logout', (req, res)=>{
         res.redirect('/');
     })
 });
-app.listen(3000);
+app.listen(port, ()=> console.log(`Server is listening on port ${port}`));
