@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/js/query.js"></script>
+</head>
+<body>
+    <%- include ('header.ejs'); %>
+    <div class="containter">
+        <div class="content">
+            <div class="top">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1><%= locals.salam %>, <%= locals.username %></h1>
+                    </div>
+                </div>
+                <% if(locals.asSignIn === "peserta"){ %>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="fs-5">Anda login sebagai <%= locals.asSignIn  %></p>
+                    </div>
+                </div>
+
+
+                <% }else{ %>
+                <div class="text">
+                    <h1>Welcome, to EzWeb</h1>
+                    <p>take it eazy guys!!</p>
+                    <p id="time"><%= currentTime  %></p>
+                    <!-- <p><%= locals.timeNow %></p> -->
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

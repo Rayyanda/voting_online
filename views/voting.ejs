@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('header.ejs'); %>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <% if(kandidat.length > 0){ %>
+                <% 
+                    const kode_peserta = datap[1]; 
+                    const kode_voting = datap[0]; 
+                %>
+                <p>Kode Peserta : <%= kode_peserta %></p>
+                <p>Nama Voting : <%= kode_voting %></p>
+                <% kandidat.forEach((data)=>{ %>
+                    <div class="col-lg-4">
+                        <div class="card text-center" style="width: 18rem;">
+                            <img src="/image/kandidat/<%= data.foto_kandidat %>" class="card-img-top mx-auto d-block rounded img-thumbnail "  alt="..." style="max-width: 200px;">
+                            <div class="card-body">
+                              <h5 class="card-title"><%= data.nama_kandidat  %></h5>
+                              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                              <a href="/vote-<%= data.kode_kandidat %>-<%= kode_peserta %>" class="btn btn-primary">Pilih</a>
+                            </div>
+                          </div>
+                    </div>
+                <% }); %>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

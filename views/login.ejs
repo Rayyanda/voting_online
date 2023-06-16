@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/query.js"></script>
+    <%- include ('header.ejs');%> 
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Hello</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <form action="/log-in" method="post">
+                    <div class="row mb-3">
+                      <label for="inputEmail3" class="col-sm-2 col-form-label">Kode</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="kodeCreator" name="kodeCreator">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                      <div class="col-sm-9">
+                        <input type="password" class="form-control" id="passwordCreator" name="passwordCreator">
+                      </div>
+                      <div class="col-sm-1">
+                        <a href="#" onclick="togglepassword()">
+                          <span><img id="eye" src="/image/eye.svg" alt="">
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-sm-12">
+                        <a href="/lupapassword" class="btn">Lupa Password?</a>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="myButton">
+                      
+                      Sign in
+                    </button>
+                    
+                  </form>
+            </div>
+            <% if(errors.length > 0){ %>
+            <div class="col-md-2">
+              <% errors.forEach((err)=>{ %>
+
+                  <%= err  %>
+              <% }); %>
+            </div>
+            <% } %>
+        </div>
+    </div>
+     
+</body>
+</html>

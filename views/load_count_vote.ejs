@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('header.ejs'); %>
+</head>
+<body>
+    <div class="container">
+        <table class="table table-striped text-center">
+            <thead>
+              <tr>
+                <th colspan="6">Hasil Vote</th>
+              </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Kode Kandidat</th>
+                    <th scope="col">Nama Kandidat</th>
+                    <th scope="col">Foto Kandidat</th>
+                    <th scope="col">Numerik</th>
+                    <th scope="col">Persentase</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(result.length > 0){ %>
+                    <% var num = 0; %>
+                    <% result.forEach((data)=>{ %>
+                        <tr>
+                            <td><%= num+=1 %></td>
+                            <td><%= data.kode_kandidat %></td>
+                            <%if(num === 1){ %>
+                            <td><button class="btn btn-success" type="button" title="Pemenang"><%= data.nama_kandidat %></button></td>
+                            <% }else{ %>
+                                <td><%= data.nama_kandidat %></td>
+                            <%} %>
+                            <td><img src="/image/kandidat/<%= data.foto_kandidat %>" alt="" width="200" class="img-thumbnail"></td>
+                            <td > 
+                                <p hidden id="ttl_suara"><%= data['Total Suara']; %></p>
+                                <p hidden id="jml_all"><%= jml_suara[0]['COUNT(suara_vote)']; %></p>
+                                <%= data['Total Suara']; %>/<%= jml_suara[0]['COUNT(suara_vote)'] %> </td>
+                            <td>
+                                <div class="progress" id="progressbar" role="progressbar" aria-label="Basic example" aria-valuenow="<%= (data['Total Suara']/jml_suara[0]['COUNT(suara_vote)'])*100 %>" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" id="tp" style="width: <%= data['Persentase ']; %>%;"><%= data['Persentase ']; %>%</div>
+                                </div>
+                            </td>
+                        </tr>
+                    <% }); %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
